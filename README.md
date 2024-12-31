@@ -29,6 +29,7 @@ A web-based application designed to help users effectively manage their finances
 5. 🌐 Open your browser and navigate to `http://127.0.0.1:5000/`.
 6. 📝 Enter your financial details into the form provided.
 7. ✅ Submit the form to receive customized financial advice tailored to your needs.
+8. or go to `https://financial-adviser-sgut.onrender.com/`
 
 ## File Structure
 
@@ -39,7 +40,7 @@ A web-based application designed to help users effectively manage their finances
 
 ## Dependencies
 
-- 🐍 **Python 3.x**: Ensure the latest version of Python is installed.
+- 🐍 **Python 3.12.7**: Ensure this version of Python is installed.
 - 🌐 **Flask**: A lightweight WSGI web application framework.
 
 ## Future Enhancements
