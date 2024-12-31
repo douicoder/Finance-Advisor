@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Advisor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            padding: 20px;
+            background-color: #BDE0FE;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #FFAFCC;
+        }
+
+        form {
+            margin: 0 auto;
+            max-width: 450px;
+            background-color: #FFFFFF;
+            padding: 46px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 2px solid #FFC8DD;
+        }
+
+        label {
+            display: block;
+            margin: 12px 0 6px;
+            font-size: 1.1em;
+            color: #FFC8DD;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 12px;
+            border-radius: 6px;
+            border: 1px solid #CCC;
+            font-size: 1em;
+            background-color: #F9F9F9;
+        }
+
+        input[type="submit"] {
+            background-color: #FFAFCC;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #FF69B4;
+        }
+
+        button {
+            background-color: #A2D2FF;
+            padding: 10px 15px;
+            margin-top: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #BDE0FE;
+        }
+
+        h2 {
+            color: #FFC8DD;
+        }
+
+        .custom-question {
+            margin-bottom: 18px;
+            
+            padding: 15px;
+            border-radius: 8px;
+            
+        }
+
+        input[type="text"] {
+            background-color: #FFFAF0;
+            font-style: italic;
+        }
+
+        input[type="number"] {
+            background-color: #FFFAF0;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Personal Finance Advisor</h1>
+    <form method="POST" action="/submit" id="finance-form">
+        <label for="salary">Monthly Salary:</label>
+        <input type="number" name="salary" required placeholder="e.g., 3000"><br>
+
+        <label for="currency">Currency:</label>
+        <input type="text" name="currency" required placeholder="e.g., USD"><br>
+
+        <label for="salary_date">Salary Date:</label>
+        <input type="date" name="salary_date" required><br>
+
+        <label for="groceries">Groceries Spending:</label>
+        <input type="number" name="groceries" required placeholder="e.g., 250"><br>
+
+        <label for="electricity_bill">Electricity Bill:</label>
+        <input type="number" name="electricity_bill" required placeholder="e.g., 100"><br>
+
+        <label for="water_bill">Water Bill:</label>
+        <input type="number" name="water_bill" required placeholder="e.g., 30"><br>
+
+        <label for="school_fee">School Fees:</label>
+        <input type="number" name="school_fee" required placeholder="e.g., 200"><br>
+
+        <label for="streaming">Streaming Subscriptions:</label>
+        <input type="number" name="streaming" required placeholder="e.g., 50"><br>
+
+        <label for="shopping">Shopping Expenses:</label>
+        <input type="number" name="shopping" required placeholder="e.g., 100"><br>
+
+        
+
+        <div style="display: inline-block; vertical-align: middle;">
+            <label for="event_toggle" style="margin-right: 8px;">Planing for an Event??</label>
+            <input type="checkbox" id="event_toggle" checked onchange="toggleEventFields()" style="vertical-align: middle;">
+        </div>
+        <br>
+
+        <div id="event-fields">
+            <label for="event">Events you wanna save money for:</label>
+            <input type="text" name="event" placeholder="e.g., trip to Japan, wedding"><br>
+        
+            <label for="eventestimatedamount">Event Estimated Expense:</label>
+            <input type="number" name="eventestimatedamount" placeholder="e.g., 8000"><br>
+        
+            <label for="general_date_event">General date of events:</label>
+            <input type="date" name="general_date_event"><br>
+        </div>
+        
+
+
+        <!-- Add custom questions section -->
+        <div id="custom-questions"></div>
+        <button type="button" onclick="addCustomQuestion()">Add Custom Expenses</button><br>
+
+        <input type="submit" value="Get Advice">
+    </form>
+
+    {% if advice %}
+    <h2>Financial Advice:</h2>
+    <p>{{ advice }}</p>
+    {% endif %}
+
+    {% if error %}
+    <h2>Error:</h2>
+    <p>{{ error }}</p>
+    {% endif %}
+
+    <script>
+        const customQuestionsList = []; // Array to hold custom questions and answers
+function toggleEventFields() {
+    const eventFields = document.getElementById('event-fields');
+    const isChecked = document.getElementById('event_toggle').checked;
+    eventFields.style.display = isChecked ? 'block' : 'none';
+}
+
+        function addCustomQuestion() {
+            const customQuestionsDiv = document.getElementById('custom-questions');
+
+            const questionDiv = document.createElement('div');
+            questionDiv.classList.add('custom-question');
+
+            const questionLabel = document.createElement('label');
+            questionLabel.innerText = "Custom expenses:";
+            questionDiv.appendChild(questionLabel);
+
+            const questionInput = document.createElement('input');
+            questionInput.setAttribute('type', 'text');
+            questionInput.setAttribute('name', 'custom_question[]');
+            questionInput.setAttribute('placeholder', 'Enter your expenses');
+            questionDiv.appendChild(questionInput);
+
+            const answerLabel = document.createElement('label');
+            answerLabel.innerText = "expenses:";
+            questionDiv.appendChild(answerLabel);
+
+            const answerInput = document.createElement('input');
+            answerInput.setAttribute('type', 'number');
+            answerInput.setAttribute('name', 'custom_answer[]');
+            questionDiv.appendChild(answerInput);
+
+            customQuestionsDiv.appendChild(questionDiv);
+        }
+
+        // Allow normal form submission once you're ready to send data
+        document.getElementById('finance-form').onsubmit = function(event) {
+            // This allows the form to submit normally without preventing default behavior
+        };
+    </script>
+</body>
+</html>

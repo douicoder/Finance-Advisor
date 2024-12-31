@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Advice</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            padding: 20px;
+            background-color: #BDE0FE;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #FFAFCC;
+            font-size: 2em;
+        }
+
+        .advice-container {
+            margin: 30px auto;
+            max-width: 600px;
+            background-color: #FFFFFF;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 2px solid #FFC8DD;
+        }
+
+        h2 {
+            color: #FFC8DD;
+            font-size: 1.6em;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        p {
+            font-size: 1.1em;
+            color: #333;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #FFAFCC;
+            color: white;
+            padding: 12px 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1em;
+        }
+
+        button:hover {
+            background-color: #FF69B4;
+        }
+
+        .error-message {
+            background-color: #FFCDD2;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #F44336;
+            color: #D32F2F;
+            text-align: center;
+        }
+
+        .advice-container p {
+            font-style: italic;
+            color: #333;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Financial Advice</h1>
+    
+    <div class="advice-container">
+        <!-- Show Financial Advice -->
+        {% if advice %}
+            <h2>Your Personalized Advice:</h2>
+            <p>{{ advice }}</p>
+        {% endif %}
+
+        <!-- Show Error Message if there's an issue -->
+        {% if error %}
+            <div class="error-message">
+                <h2>Error:</h2>
+                <p>{{ error }}</p>
+            </div>
+        {% endif %}
+
+        <!-- Button to return to the main page -->
+        <div class="button-container">
+            <button onclick="window.location.href='/'">Back to Form</button>
+        </div>
+    </div>
+</body>
+</html>
