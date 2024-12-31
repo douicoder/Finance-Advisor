@@ -5,7 +5,7 @@ from datetime import datetime
 app = Flask(__name__)
 
 # Initialize GenAI with API key
-genai.configure(api_key="AIzaSyA0nPcyfGzdqir4f7Pf6uy_xAg3fGifySU")
+genai.configure(api_key="YOUR-API-KEY")
 model = genai.GenerativeModel('gemini-1.5-flash')
 
 @app.route('/')
