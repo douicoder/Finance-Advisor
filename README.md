@@ -14,22 +14,23 @@ A web-based application designed to help users effectively manage their finances
 
 1. 📥 Clone or download the repository.
 2. 🐍 Ensure Python is installed on your system.
-3. 📦 Install the required dependencies by running:
+3. Install the required dependencies by running:
 
    ```bash
-   pip install flask
+   pip install -r requirements.txt
    ```
+   and replace `YOUR_API_KEY` with your actual api key
 
 4. ▶️ Start the application with the command:
 
    ```bash
    python app.py
    ```
-
+   
 5. 🌐 Open your browser and navigate to `http://127.0.0.1:5000/`.
 6. 📝 Enter your financial details into the form provided.
 7. ✅ Submit the form to receive customized financial advice tailored to your needs.
-8. or go to `https://financial-adviser-sgut.onrender.com/`
+8.You can Check out a demo on `https://financial-adviser-sgut.onrender.com/`
 
 ## File Structure
 
