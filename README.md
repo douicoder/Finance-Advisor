@@ -30,7 +30,7 @@ A web-based application designed to help users effectively manage their finances
 5. 🌐 Open your browser and navigate to `http://127.0.0.1:5000/`.
 6. 📝 Enter your financial details into the form provided.
 7. ✅ Submit the form to receive customized financial advice tailored to your needs.
-8.You can Check out a demo on `https://financial-adviser-sgut.onrender.com/`
+8. You can Check out a demo on `https://financial-adviser-sgut.onrender.com/`
 
 ## File Structure
 
