@@ -19,7 +19,7 @@ A web-based application designed to help users effectively manage their finances
    ```bash
    pip install -r requirements.txt
    ```
-   and replace `YOUR_API_KEY` with your actual api key
+   and replace `YOUR_API_KEY` with your actual api key more on that here `https://pypi.org/project/python-gemini-api/`
 
 4. ▶️ Start the application with the command:
 
